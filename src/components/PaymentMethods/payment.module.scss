@@ -1,0 +1,39 @@
+@use '../../styles/base/forward' as *;
+@use '../../styles/abstracts/variables' as *;
+
+.payment {
+    &__methods {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: rem(8px);
+        overflow: auto;
+
+        @include onlymobile {
+            display: flex;
+        }
+    }
+
+    &__method {
+        background: $bg-dark;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: rem(12px);
+        border: rem(1px) $stroke-inactive solid;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            background: $field-active;
+            transition: 0.3s;
+
+        }
+    }
+
+    &__method_active {
+        border: rem(1px) $stroke-active solid;
+        background: $field-active;
+    }
+}

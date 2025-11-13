@@ -1,0 +1,25 @@
+@use '../../styles/base/forward' as *;
+@use '../../styles/abstracts/variables' as *;
+
+.container {
+    width: 100%;
+    max-width: rem(1325px);
+    padding: 0 rem(20px);
+
+    @include iftablet {
+        max-width: 100%;
+        padding: 0 rem(20px);
+    }
+
+    @include iflaptop {
+        max-width: rem(1325px);
+    }
+
+    @include ifdesktop {
+        max-width: rem(1325px);
+        padding: 0;
+    }
+
+
+
+}

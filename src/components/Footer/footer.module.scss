@@ -1,0 +1,78 @@
+@use '../../styles/base/forward' as *;
+
+.footer {
+    padding: rem(24px) 0;
+    display: flex;
+    justify-content: center;
+    border-top: rem(1px) $stroke-inactive solid;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        @include onlymobile {
+            flex-direction: column;
+            align-items: start;
+            gap: rem(16px);
+        }
+    }
+
+    &__nav {
+        display: flex;
+        gap: rem(32px);
+        align-items: center;
+
+        @include onlymobile {
+            flex-direction: column;
+            align-items: start;
+            gap: rem(16px);
+        }
+
+        @include iftablet {
+            gap: rem(24px);
+        }
+    }
+
+    &__docs {
+        display: flex;
+        gap: rem(32px);
+        align-items: center;
+
+
+        @include onlymobile {
+            flex-direction: column;
+            align-items: start;
+            gap: rem(16px);
+        }
+
+        @include iftablet {
+            gap: rem(24px);
+        }
+
+        @include iflaptop {
+            gap: rem(32px);
+        }
+    }
+
+    &__nav_item,
+    &__doc {
+        cursor: pointer;
+        color: $text-primary;
+        list-style-type: none;
+        transition: 0.3s;
+
+        &:hover {
+            color: $text-tertiary;
+            transition: 0.3s;
+        }
+    }
+
+    &__doc {
+        color: $text-tertiary;
+
+        &:hover {
+            color: rgba($text-tertiary, 50%);
+            transition: 0.3s;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.payment__methods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  overflow: auto;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+  .payment__methods {
+    display: flex;
+  }
+}
+.payment__method {
+  background: #21242B;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 0.0625rem #1F2734 solid;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.payment__method:hover {
+  background: #272440;
+  transition: 0.3s;
+}
+.payment__method_active {
+  border: 0.0625rem #7B58E8 solid;
+  background: #272440;
+}

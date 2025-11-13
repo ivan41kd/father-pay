@@ -1,0 +1,40 @@
+.faq {
+  padding-top: 3.75rem;
+}
+.faq__subtitle {
+  color: #858892;
+}
+.faq__subtitle span {
+  color: #7B58E8;
+}
+.faq__steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  gap: 1rem;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+  .faq__steps {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.faq__step {
+  background: #2F333D;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.faq__step_steps {
+  color: #4F5562;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+.faq__step_text {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 500;
+}

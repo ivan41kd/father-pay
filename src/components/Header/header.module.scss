@@ -1,0 +1,107 @@
+@use '../../styles/base/forward' as *;
+
+.header {
+    padding: rem(20px) 0;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    background: $bg-black;
+    z-index: 2;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info {
+        display: flex;
+        max-width: rem(296px);
+        width: 100%;
+        justify-content: space-between;
+
+        @include onlymobile {
+            max-width: rem(130px);
+        }
+    }
+
+    &__logo_wrapper {
+        display: flex;
+        align-items: center;
+        max-width: rem(190px);
+        width: 100%;
+        justify-content: space-between;
+
+        @include onlymobile {
+            max-width: rem(28px);
+        }
+    }
+
+    &__logo_icon {
+        width: rem(28px);
+        height: rem(28px);
+
+    }
+
+    &__logo {
+        margin-top: rem(4px);
+        width: rem(150px);
+        height: rem(24px);
+
+        @include onlymobile {
+            display: none;
+        }
+    }
+
+    &__online {
+        background: linear-gradient(90deg, #21242B 0%, rgba(33, 36, 43, 0.54) 100%);
+        border-radius: rem(8px);
+        padding: rem(4px) rem(12px);
+        display: flex;
+        align-items: center;
+        gap: rem(12px);
+    }
+
+    &__online_info {
+        display: flex;
+        flex-direction: column;
+        gap: rem(5px);
+    }
+
+    &__nav {
+        display: flex;
+        gap: rem(32px);
+        align-items: center;
+
+        @include onlymobile {
+            display: none;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        gap: rem(60px);
+        align-items: center;
+
+        @include onlymobile {
+            gap: rem(12px);
+        }
+    }
+
+    &__nav_item {
+        color: $text-primary;
+        list-style-type: none;
+        transition: 0.3s;
+
+        &:hover {
+            color: $text-tertiary;
+            transition: 0.3s;
+        }
+    }
+
+    &__socials {
+        display: flex;
+        gap: rem(12px);
+    }
+
+}

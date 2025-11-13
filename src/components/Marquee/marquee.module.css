@@ -1,0 +1,26 @@
+.marquee__item {
+  padding: 0.625rem 0.75rem;
+  background: #21242B;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin: 0 0.25rem;
+}
+.marquee__item:hover span {
+  color: white;
+  transition: 0.3s;
+}
+.marquee__item:hover .marquee__item_name, .marquee__item:hover .marquee__item_price {
+  color: #858892;
+  transition: 0.3s;
+}
+.marquee__item_name, .marquee__item_price {
+  color: #4F5562;
+  transition: 0.3s;
+}
+.marquee__item span {
+  font-weight: 600;
+  color: #858892;
+  transition: 0.3s;
+}

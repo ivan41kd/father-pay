@@ -1,0 +1,18 @@
+@use '../../styles/base/forward' as *;
+
+.social {
+
+    &__icon {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__link {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__social:hover svg path {
+        fill: $brand-color;
+    }
+}

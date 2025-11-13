@@ -1,0 +1,38 @@
+@use '../../styles/base/forward' as *;
+@use '../../styles/abstracts/variables' as *;
+
+.marquee {
+    &__item {
+        padding: rem(10px) rem(12px);
+        background: $bg-dark;
+        border-radius: rem(4px);
+        display: flex;
+        flex-direction: column;
+        gap: rem(2px);
+        margin: 0 rem(4px);
+    }
+
+    &__item:hover span {
+        color: white;
+        transition: 0.3s;
+    }
+
+    &__item:hover &__item_name,
+    &__item:hover &__item_price {
+        color: $text-primary;
+        transition: 0.3s;
+    }
+
+    &__item_name,
+    &__item_price {
+        color: $text-tertiary;
+        transition: 0.3s;
+    }
+
+    &__item span {
+        font-weight: 600;
+        color: $text-primary;
+        transition: 0.3s;
+    }
+
+}

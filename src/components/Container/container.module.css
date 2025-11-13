@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  max-width: 82.8125rem;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 82.8125rem;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    max-width: 82.8125rem;
+    padding: 0;
+  }
+}

@@ -1,0 +1,49 @@
+@use '../../styles/base/forward' as *;
+
+.faq {
+    padding-top: rem(60px);
+
+    &__subtitle {
+        color: $text-primary ;
+
+        span {
+            color: $brand-color;
+        }
+    }
+
+    &__steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        gap: rem(16px);
+
+        @include onlymobile {
+            display: flex;
+            flex-direction: column;
+
+        }
+    }
+
+    &__step {
+        background: $bg-dark-light;
+        width: 100%;
+        padding: rem(16px);
+        border-radius: rem(16px);
+        display: flex;
+        flex-direction: column;
+        gap: rem(20px);
+    }
+
+    &__step_steps {
+        color: $text-tertiary;
+        font-size: rem(18px);
+        font-weight: 500;
+    }
+
+    &__step_text {
+        color: white;
+        font-size: rem(18px);
+        font-weight: 500;
+    }
+
+}
