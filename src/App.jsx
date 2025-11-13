@@ -171,19 +171,17 @@ function App() {
         <NavigationProvider>
           <HeaderProvider>
             <ReplenishmentProvider>
-              <BrowserRouter>
-                <Page>
-                  <Header />
-                  <MarqueeComponent />
-                  <main className="main">
-                    <Routes>
-                      <Route path={'/'} element={<ReplenishmentPage />} />
-                      <Route path={'/faq'} element={<Faq />} />
-                    </Routes>
-                  </main>
-                  <Footer />
-                </Page>
-              </BrowserRouter>
+              <Page>
+                <Header />
+                <MarqueeComponent />
+                <main className="main">
+                  <Routes>
+                    <Route path={'/'} element={<ReplenishmentPage />} />
+                    <Route path={'/faq'} element={<Faq />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </Page>
             </ReplenishmentProvider>
           </HeaderProvider>
         </NavigationProvider>
