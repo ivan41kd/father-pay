@@ -3,18 +3,20 @@ import Modal from './Modal';
 import parse from 'html-react-parser';
 
 import { policy } from '../../consts/policy';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal, openModal } from './redux/actions';
 import { useId } from 'react';
-import { useModalContext } from '../../providers/ModalProvider';
 
 const ModalPolicy = ({ children }) => {
+  const dispatch = useDispatch();
+  const { modal } = useSelector((state) => state);
   const id = useId();
-  const { openModal, isModalOpen, closeModal } = useModalContext();
 
   const handleOpen = () => {
-    openModal(id);
+    dispatch(openModal(id));
   };
   const handleClose = () => {
-    closeModal();
+    dispatch(closeModal());
   };
 
   return (
@@ -24,7 +26,7 @@ const ModalPolicy = ({ children }) => {
       <Modal
         title={'Политика конфиденциальности'}
         variant={'icon'}
-        open={isModalOpen(id)}
+        open={modal.activeModalId === id}
         close={() => handleClose()}
       >
         <div className="flex flex-col gap-8">

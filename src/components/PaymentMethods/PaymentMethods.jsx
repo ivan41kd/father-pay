@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import { useReplenishmentContext } from '../../providers/ReplenishmentProvider';
+import { useDispatch, useSelector } from 'react-redux';
 import PaymentMethod from './PaymentMethod';
 import s from './payment.module.scss';
+import { setMethod } from '../Replenishment/redux/actions';
 
 const PaymentMethods = () => {
-  const { methods, setCommission, activeMethod, setActiveMethod } =
-    useReplenishmentContext();
+  const { methods, activeMethod } = useSelector((state) => state.replenishment);
+  const dispatch = useDispatch();
 
   const methodHandler = (index, commission) => {
-    setActiveMethod(index);
-    setCommission(commission);
+    dispatch(setMethod(commission, index));
   };
   return (
     <div className="flex flex-col gap-3">

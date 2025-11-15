@@ -1,18 +1,10 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useLocation,
-  ScrollRestoration,
-} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Page from './components/Page';
 import MarqueeComponent from './components/Marquee/Marquee';
 import ReplenishmentPage from './pages/ReplenishmentPage';
-import ReplenishmentProvider from './providers/ReplenishmentProvider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import HeaderProvider from './providers/HeaderProvider';
-import ModalProvider from './providers/ModalProvider';
 import NavigationProvider from './providers/NavigationProvider';
 import Footer from './components/Footer/Footer';
 import Faq from './pages/Faq/Faq';
@@ -167,25 +159,21 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ModalProvider>
-        <NavigationProvider>
-          <HeaderProvider>
-            <ReplenishmentProvider>
-              <Page>
-                <Header />
-                <MarqueeComponent />
-                <main className="main">
-                  <Routes>
-                    <Route path={'/'} element={<ReplenishmentPage />} />
-                    <Route path={'/faq'} element={<Faq />} />
-                  </Routes>
-                </main>
-                <Footer />
-              </Page>
-            </ReplenishmentProvider>
-          </HeaderProvider>
-        </NavigationProvider>
-      </ModalProvider>
+      <NavigationProvider>
+        <HeaderProvider>
+          <Page>
+            <Header />
+            <MarqueeComponent />
+            <main className="main">
+              <Routes>
+                <Route path={'/'} element={<ReplenishmentPage />} />
+                <Route path={'/faq'} element={<Faq />} />
+              </Routes>
+            </main>
+            <Footer />
+          </Page>
+        </HeaderProvider>
+      </NavigationProvider>
     </ThemeProvider>
   );
 }

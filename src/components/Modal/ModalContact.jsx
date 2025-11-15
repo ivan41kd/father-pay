@@ -3,17 +3,19 @@ import { contacts } from '../../consts/contacts';
 import parse from 'html-react-parser';
 import Socials from '../Socials/Socials';
 import { useId } from 'react';
-import { useModalContext } from '../../providers/ModalProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal, openModal } from './redux/actions';
 
 const ModalContact = ({ handler }) => {
+  const dispatch = useDispatch();
+  const { modal } = useSelector((state) => state);
   const id = useId();
-  const { openModal, isModalOpen, closeModal } = useModalContext();
 
   const handleOpen = () => {
-    openModal(id);
+    dispatch(openModal(id));
   };
   const handleClose = () => {
-    closeModal();
+    dispatch(closeModal());
   };
 
   return (
@@ -23,7 +25,7 @@ const ModalContact = ({ handler }) => {
       <Modal
         title={'Контакты'}
         variant={'icon'}
-        open={isModalOpen(id)}
+        open={modal.activeModalId === id}
         close={() => handleClose()}
       >
         {contacts.map((contact, index) => (

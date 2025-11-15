@@ -1,17 +1,19 @@
 import Modal from './Modal';
 import exampleImg from '../../assets/login.png';
-import { useModalContext } from '../../providers/ModalProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal, openModal } from './redux/actions';
 import { useId } from 'react';
 
 const ModalLogin = ({ handler }) => {
+  const dispatch = useDispatch();
+  const { modal } = useSelector((state) => state);
   const id = useId();
-  const { openModal, isModalOpen, closeModal } = useModalContext();
 
   const handleOpen = () => {
-    openModal(id);
+    dispatch(openModal(id));
   };
   const handleClose = () => {
-    closeModal();
+    dispatch(closeModal());
   };
   return (
     <>
@@ -21,7 +23,7 @@ const ModalLogin = ({ handler }) => {
         title={'Где взять логин?'}
         variant={'button'}
         buttonTitle={'Понятно'}
-        open={isModalOpen(id)}
+        open={modal.activeModalId === id}
         close={() => handleClose()}
       >
         <div className="flex flex-col gap-6">

@@ -1,10 +1,10 @@
-import { useReplenishmentContext } from '../../../providers/ReplenishmentProvider';
+import { useSelector } from 'react-redux';
+
 import ToolTip from '../../Tooltip/Tooltip';
 
 import s from '../replenishment.module.scss';
 const ReplenishmentCheckout = () => {
-  const { amount, commission } = useReplenishmentContext();
-
+  const { amount, commission } = useSelector((state) => state.replenishment);
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex justify-between">

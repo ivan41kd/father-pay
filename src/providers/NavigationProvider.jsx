@@ -9,7 +9,7 @@ const NavigationProvider = ({ children }) => {
     },
     {
       title: 'Контакты',
-      modal: ModalContact,
+      modal: ModalContact ,
     },
     {
       title: 'Отзывы',

@@ -2,7 +2,6 @@ import CheckBox from '../../Checkbox/Checkbox';
 import { useForm, Controller } from 'react-hook-form';
 import Button from '../../Button';
 import Input from '../../Input/Input';
-import { useReplenishmentContext } from '../../../providers/ReplenishmentProvider';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import Form from '../../Form/Form';
 import ButtonsGroup from '../../ButtonsGroup/ButtonsGroup';
@@ -10,6 +9,8 @@ import PaymentMethods from '../../PaymentMethods/PaymentMethods';
 import ReplenishmentCheckout from '../ReplenishmentCheckout/ReplenishmentCheckout';
 import Tag from '../../Tag/Tag';
 import ModalLogin from '../../Modal/ModalLogin';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAmount, setLogin } from '../redux/actions';
 
 const ReplenishmentForm = ({ className }) => {
   const {
@@ -18,13 +19,14 @@ const ReplenishmentForm = ({ className }) => {
     register,
     control,
     setValue,
+    watch,
   } = useForm({
     defaultValues: {
       amount: 0,
     },
   });
-
-  const { setAmount, setLogin, login, amount } = useReplenishmentContext();
+  const dispatch = useDispatch();
+  const { amount, login } = useSelector((state) => state.replenishment);
 
   const submitReplenishmentForm = (e) => {
     console.log(e);
@@ -39,13 +41,14 @@ const ReplenishmentForm = ({ className }) => {
       <Controller
         name={'login'}
         control={control}
+        value={login}
         render={({ field }) => {
           return (
             <Input
               type={'text'}
               name={'login'}
-              error={errors.login}
               value={login}
+              error={errors.login}
               register={{
                 ...register('login', {
                   required: true,
@@ -57,16 +60,16 @@ const ReplenishmentForm = ({ className }) => {
                   },
                 }),
               }}
-              onChange={(e) => {
-                field.onChange(e.target.value);
-                setLogin(e.target.value);
+              onChange={(v) => {
+                field.onChange(v);
+                dispatch(setLogin(v));
               }}
               placeholder={'Введите логин'}
               icon={
                 <ModalLogin
                   handler={<Tag text={'Где его взять?'} />}
                   modalId={'modal-login'}
-                ></ModalLogin>
+                />
               }
             />
           );
@@ -81,32 +84,31 @@ const ReplenishmentForm = ({ className }) => {
           return (
             <div className="flex-col flex w-full gap-3">
               <Input
+                isNumeric={true}
                 type={'text'}
                 name={'amount'}
                 error={errors.amount}
                 value={amount}
                 onChange={(e) => {
-                  const inputValue = e.target.value;
+                  const inputValue = e;
                   const numericValue = inputValue
                     .replace(/[^0-9.]/g, '')
                     .replace(/^0+/, '');
-                  field.onChange(Number(numericValue).toLocaleString('ru-RU'));
-                  setAmount(numericValue !== '' ? numericValue : 0);
+                  field.onChange(numericValue);
+                  dispatch(setAmount(numericValue !== '' ? numericValue : 0));
                 }}
                 register={{ ...register('amount', { required: true, min: 1 }) }}
                 placeholder={'Введите сумму'}
+                pattern="/[^0-9.]/g"
                 icon={<AccountBalanceWalletIcon color="tertiary" />}
               />
               <ButtonsGroup
                 onClick={(e) => {
-                  setAmount(e.target.value);
+                  dispatch(setAmount(Number(e.target.value)));
                   field.onChange(
                     Number(e.target.value).toLocaleString('ru-RU')
                   );
-                  setValue(
-                    'amount',
-                    Number(e.target.value).toLocaleString('ru-RU')
-                  );
+                  setValue('amount', Number(e.target.value));
                 }}
               />
               <div className="md:hidden">
